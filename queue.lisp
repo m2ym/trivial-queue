@@ -3,6 +3,7 @@
 (defpackage :trivial-queue
   (:use :cl)
   (:export #:make-queue
+           #:queue-p
            #:queue-size
            #:queue-empty-p
            #:enqueue
@@ -30,7 +31,7 @@
         (let ((head initial-contents)
               (last (last initial-contents))
               (size (length initial-contents)))
-          (setq last (setf (cdr last) (cons nil nil)))
+          (setq last (setf (cdr last) cell))
           (%make-queue :%head head :%last last :%size size))
         (%make-queue :%head cell :%last cell))))
 
